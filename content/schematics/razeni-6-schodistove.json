@@ -1,0 +1,178 @@
+{
+  "category": "Domovní instalace",
+  "title": "Řazení 6 – schodišťové zapojení",
+  "order": 60,
+  "description": "Ovládání světla ze dvou míst dvěma střídavými přepínači a dvěma propojovacími vodiči.",
+  "width": 460,
+  "height": 330,
+  "devices": {
+    "FA1": {
+      "type": "breaker",
+      "label": "FA1 – jistič B10",
+      "on": true,
+      "rating": 10
+    },
+    "S1": {
+      "type": "switch",
+      "label": "S1 – přepínač dole"
+    },
+    "S2": {
+      "type": "switch",
+      "label": "S2 – přepínač nahoře"
+    }
+  },
+  "components": [
+    {
+      "type": "src",
+      "x": 60,
+      "y": 40,
+      "net": "L1",
+      "label": "L",
+      "labelAt": [
+        0,
+        -10
+      ]
+    },
+    {
+      "type": "q1p",
+      "x": 60,
+      "y": 60,
+      "dev": "FA1",
+      "label": "FA1",
+      "labelAt": [
+        12,
+        34
+      ]
+    },
+    {
+      "type": "text",
+      "x": 74,
+      "y": 82,
+      "text": "B10",
+      "size": 10
+    },
+    {
+      "type": "co",
+      "x": 100,
+      "y": 170,
+      "dev": "S1",
+      "rot": 270,
+      "label": "S1",
+      "labelAt": [
+        20,
+        -22
+      ]
+    },
+    {
+      "type": "co",
+      "x": 300,
+      "y": 170,
+      "dev": "S2",
+      "rot": 90,
+      "label": "S2",
+      "labelAt": [
+        -40,
+        -22
+      ]
+    },
+    {
+      "type": "text",
+      "x": 200,
+      "y": 200,
+      "text": "propojovací vodiče",
+      "anchor": "middle",
+      "size": 10
+    },
+    {
+      "type": "lamp",
+      "x": 360,
+      "y": 200,
+      "label": "E1"
+    },
+    {
+      "type": "src",
+      "x": 60,
+      "y": 290,
+      "net": "N",
+      "labelAt": [
+        -16,
+        5
+      ]
+    }
+  ],
+  "wires": [
+    [
+      [
+        60,
+        40
+      ],
+      [
+        60,
+        60
+      ]
+    ],
+    [
+      [
+        60,
+        120
+      ],
+      [
+        60,
+        170
+      ],
+      [
+        100,
+        170
+      ]
+    ],
+    [
+      [
+        160,
+        158
+      ],
+      [
+        240,
+        158
+      ]
+    ],
+    [
+      [
+        160,
+        182
+      ],
+      [
+        240,
+        182
+      ]
+    ],
+    [
+      [
+        300,
+        170
+      ],
+      [
+        360,
+        170
+      ],
+      [
+        360,
+        200
+      ]
+    ],
+    [
+      [
+        360,
+        260
+      ],
+      [
+        360,
+        290
+      ],
+      [
+        60,
+        290
+      ]
+    ]
+  ],
+  "explain": "Typické zapojení na schodiště nebo do dlouhé chodby: světlo lze rozsvítit i zhasnout **z kteréhokoliv ze dvou míst**.\n\nPoužívají se dva **střídavé přepínače** (řazení 6). Fáze vede na společnou svorku prvního přepínače, mezi přepínači vedou **dva propojovací (korespondenční) vodiče** a ze společné svorky druhého přepínače pokračuje fáze ke svítidlu.\n\nSvětlo svítí, když jsou oba přepínače „ve stejné cestě“. Každé přepnutí kteréhokoliv z nich stav změní.\n\n**Vyzkoušej:** přepínej **S1** a **S2** v libovolném pořadí."
+}

@@ -1,0 +1,197 @@
+{
+  "category": "Domovní instalace",
+  "title": "Řazení 5 – sériový (lustrový) přepínač",
+  "order": 55,
+  "description": "Dvě skupiny svítidel ovládané jedním přístrojem se dvěma kolébkami.",
+  "width": 420,
+  "height": 380,
+  "devices": {
+    "FA1": {
+      "type": "breaker",
+      "label": "FA1 – jistič B10",
+      "on": true,
+      "rating": 10
+    },
+    "S1": {
+      "type": "series",
+      "label": "S1 – lustrový přepínač"
+    }
+  },
+  "components": [
+    {
+      "type": "src",
+      "x": 60,
+      "y": 40,
+      "net": "L1",
+      "label": "L",
+      "labelAt": [
+        0,
+        -10
+      ]
+    },
+    {
+      "type": "q1p",
+      "x": 60,
+      "y": 60,
+      "dev": "FA1",
+      "label": "FA1",
+      "labelAt": [
+        12,
+        34
+      ]
+    },
+    {
+      "type": "text",
+      "x": 74,
+      "y": 82,
+      "text": "B10",
+      "size": 10
+    },
+    {
+      "type": "series5",
+      "x": 160,
+      "y": 160,
+      "dev": "S1",
+      "label": "S1",
+      "labelAt": [
+        26,
+        30
+      ]
+    },
+    {
+      "type": "text",
+      "x": 124,
+      "y": 236,
+      "text": "A",
+      "size": 11,
+      "cls": "sch-label"
+    },
+    {
+      "type": "text",
+      "x": 190,
+      "y": 236,
+      "text": "B",
+      "size": 11,
+      "cls": "sch-label"
+    },
+    {
+      "type": "lamp",
+      "x": 120,
+      "y": 260,
+      "label": "E1"
+    },
+    {
+      "type": "lamp",
+      "x": 260,
+      "y": 260,
+      "label": "E2"
+    },
+    {
+      "type": "src",
+      "x": 60,
+      "y": 340,
+      "net": "N",
+      "labelAt": [
+        -16,
+        5
+      ]
+    }
+  ],
+  "wires": [
+    [
+      [
+        60,
+        40
+      ],
+      [
+        60,
+        60
+      ]
+    ],
+    [
+      [
+        60,
+        120
+      ],
+      [
+        60,
+        140
+      ],
+      [
+        160,
+        140
+      ],
+      [
+        160,
+        160
+      ]
+    ],
+    [
+      [
+        148,
+        220
+      ],
+      [
+        148,
+        240
+      ],
+      [
+        120,
+        240
+      ],
+      [
+        120,
+        260
+      ]
+    ],
+    [
+      [
+        172,
+        220
+      ],
+      [
+        172,
+        240
+      ],
+      [
+        260,
+        240
+      ],
+      [
+        260,
+        260
+      ]
+    ],
+    [
+      [
+        120,
+        320
+      ],
+      [
+        120,
+        340
+      ]
+    ],
+    [
+      [
+        260,
+        320
+      ],
+      [
+        260,
+        340
+      ]
+    ],
+    [
+      [
+        60,
+        340
+      ],
+      [
+        340,
+        340
+      ]
+    ]
+  ],
+  "explain": "Sériový přepínač (lidově *lustrák*) má **dvě kolébky** v jednom přístroji. Každá spíná svou skupinu svítidel – typicky dvě sady žárovek v lustru.\n\nDo přístroje vede **fáze** (společná svorka L) a vycházejí dva vodiče ke svítidlům (A, B). Nulový vodič je pro obě skupiny společný.\n\n**Vyzkoušej:** v ovládání přepínej kolébky **A** a **B** (nebo klikni na levou/pravou polovinu značky)."
+}

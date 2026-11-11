@@ -1,0 +1,206 @@
+{
+  "category": "Domovní instalace",
+  "title": "Řazení 7 – křížové zapojení",
+  "order": 65,
+  "description": "Ovládání světla ze tří a více míst: dva střídavé přepínače a mezi nimi křížový přepínač.",
+  "width": 560,
+  "height": 330,
+  "devices": {
+    "FA1": {
+      "type": "breaker",
+      "label": "FA1 – jistič B10",
+      "on": true,
+      "rating": 10
+    },
+    "S1": {
+      "type": "switch",
+      "label": "S1 – střídavý (místo 1)"
+    },
+    "S2": {
+      "type": "switch",
+      "label": "S2 – křížový (místo 2)"
+    },
+    "S3": {
+      "type": "switch",
+      "label": "S3 – střídavý (místo 3)"
+    }
+  },
+  "components": [
+    {
+      "type": "src",
+      "x": 60,
+      "y": 40,
+      "net": "L1",
+      "label": "L",
+      "labelAt": [
+        0,
+        -10
+      ]
+    },
+    {
+      "type": "q1p",
+      "x": 60,
+      "y": 60,
+      "dev": "FA1",
+      "label": "FA1",
+      "labelAt": [
+        12,
+        34
+      ]
+    },
+    {
+      "type": "text",
+      "x": 74,
+      "y": 82,
+      "text": "B10",
+      "size": 10
+    },
+    {
+      "type": "co",
+      "x": 100,
+      "y": 170,
+      "dev": "S1",
+      "rot": 270,
+      "label": "S1",
+      "labelAt": [
+        20,
+        -22
+      ]
+    },
+    {
+      "type": "cross",
+      "x": 240,
+      "y": 170,
+      "dev": "S2",
+      "rot": 270,
+      "label": "S2",
+      "labelAt": [
+        20,
+        -26
+      ]
+    },
+    {
+      "type": "co",
+      "x": 440,
+      "y": 170,
+      "dev": "S3",
+      "rot": 90,
+      "label": "S3",
+      "labelAt": [
+        -40,
+        -22
+      ]
+    },
+    {
+      "type": "lamp",
+      "x": 500,
+      "y": 200,
+      "label": "E1"
+    },
+    {
+      "type": "src",
+      "x": 60,
+      "y": 290,
+      "net": "N",
+      "labelAt": [
+        -16,
+        5
+      ]
+    }
+  ],
+  "wires": [
+    [
+      [
+        60,
+        40
+      ],
+      [
+        60,
+        60
+      ]
+    ],
+    [
+      [
+        60,
+        120
+      ],
+      [
+        60,
+        170
+      ],
+      [
+        100,
+        170
+      ]
+    ],
+    [
+      [
+        160,
+        158
+      ],
+      [
+        240,
+        158
+      ]
+    ],
+    [
+      [
+        160,
+        182
+      ],
+      [
+        240,
+        182
+      ]
+    ],
+    [
+      [
+        300,
+        158
+      ],
+      [
+        380,
+        158
+      ]
+    ],
+    [
+      [
+        300,
+        182
+      ],
+      [
+        380,
+        182
+      ]
+    ],
+    [
+      [
+        440,
+        170
+      ],
+      [
+        500,
+        170
+      ],
+      [
+        500,
+        200
+      ]
+    ],
+    [
+      [
+        500,
+        260
+      ],
+      [
+        500,
+        290
+      ],
+      [
+        60,
+        290
+      ]
+    ]
+  ],
+  "explain": "Pro ovládání ze **tří a více míst** se mezi dva střídavé přepínače (řazení 6) vkládá **křížový přepínač** (řazení 7). Ten má čtyři svorky a v jedné poloze propojuje propojovací vodiče **rovně**, ve druhé **do kříže**.\n\nPro každé další ovládací místo stačí přidat další křížový přepínač.\n\n**Vyzkoušej:** přepínej **S1**, **S2** a **S3** – každé přepnutí změní stav světla."
+}

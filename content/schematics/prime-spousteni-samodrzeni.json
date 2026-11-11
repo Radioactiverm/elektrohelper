@@ -1,0 +1,562 @@
+{
+  "title": "Přímé spouštění se samodržením",
+  "category": "Motory",
+  "order": 20,
+  "description": "Klasické zapojení Start/Stop: tlačítka S1 a S0, přídržný kontakt KM1 13–14, tepelné relé F2 a signálky.",
+  "width": 580,
+  "height": 640,
+  "devices": {
+    "Q1": {
+      "type": "breaker",
+      "label": "Q1 – motorový spouštěč",
+      "on": false,
+      "rating": 16
+    },
+    "S1": {
+      "type": "button",
+      "label": "S1 – Start",
+      "color": "green"
+    },
+    "S0": {
+      "type": "button",
+      "label": "S0 – Stop",
+      "color": "red"
+    },
+    "F2": {
+      "type": "olr",
+      "label": "F2 – tepelné relé"
+    },
+    "F3": {
+      "type": "fuse",
+      "label": "F3 – pojistka ovládání",
+      "rating": 2
+    },
+    "KM1": {
+      "type": "contactor",
+      "label": "KM1 – stykač"
+    }
+  },
+  "components": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Silový obvod 3/PE AC 400/230 V",
+      "size": 11
+    },
+    {
+      "type": "src",
+      "x": 80,
+      "y": 60,
+      "net": "L1"
+    },
+    {
+      "type": "src",
+      "x": 100,
+      "y": 60,
+      "net": "L2"
+    },
+    {
+      "type": "src",
+      "x": 120,
+      "y": 60,
+      "net": "L3"
+    },
+    {
+      "type": "src",
+      "x": 160,
+      "y": 60,
+      "net": "PE"
+    },
+    {
+      "type": "q3",
+      "x": 80,
+      "y": 80,
+      "dev": "Q1",
+      "label": "Q1",
+      "pins": [
+        "1",
+        "3",
+        "5",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    {
+      "type": "km3",
+      "x": 80,
+      "y": 180,
+      "dev": "KM1",
+      "label": "KM1",
+      "pins": [
+        "1",
+        "3",
+        "5",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    {
+      "type": "olr3",
+      "x": 80,
+      "y": 260,
+      "dev": "F2",
+      "label": "F2"
+    },
+    {
+      "type": "motor3",
+      "x": 80,
+      "y": 350,
+      "label": "M1",
+      "pins": [
+        "U1",
+        "V1",
+        "W1"
+      ]
+    },
+    {
+      "type": "text",
+      "x": 166,
+      "y": 440,
+      "text": "PE",
+      "size": 10
+    },
+    {
+      "type": "text",
+      "x": 350,
+      "y": 24,
+      "text": "Ovládací obvod 230 V",
+      "anchor": "middle",
+      "size": 11
+    },
+    {
+      "type": "fuse",
+      "x": 260,
+      "y": 180,
+      "dev": "F3",
+      "label": "F3"
+    },
+    {
+      "type": "olr_nc",
+      "x": 260,
+      "y": 260,
+      "dev": "F2",
+      "label": "F2",
+      "pins": [
+        "95",
+        "96"
+      ]
+    },
+    {
+      "type": "pb_nc",
+      "x": 260,
+      "y": 340,
+      "dev": "S0",
+      "label": "S0",
+      "pins": [
+        "11",
+        "12"
+      ]
+    },
+    {
+      "type": "pb_no",
+      "x": 260,
+      "y": 420,
+      "dev": "S1",
+      "label": "S1",
+      "pins": [
+        "13",
+        "14"
+      ]
+    },
+    {
+      "type": "no",
+      "x": 320,
+      "y": 420,
+      "dev": "KM1",
+      "label": "KM1",
+      "pins": [
+        "13",
+        "14"
+      ]
+    },
+    {
+      "type": "coil",
+      "x": 260,
+      "y": 500,
+      "dev": "KM1",
+      "label": "KM1",
+      "pins": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "type": "src",
+      "x": 540,
+      "y": 600,
+      "net": "N",
+      "labelAt": [
+        18,
+        5
+      ]
+    },
+    {
+      "type": "no",
+      "x": 400,
+      "y": 270,
+      "dev": "KM1",
+      "label": "KM1",
+      "pins": [
+        "43",
+        "44"
+      ]
+    },
+    {
+      "type": "olr_no",
+      "x": 490,
+      "y": 270,
+      "dev": "F2",
+      "label": "F2",
+      "pins": [
+        "97",
+        "98"
+      ],
+      "labelAt": [
+        12,
+        36
+      ]
+    },
+    {
+      "type": "lamp",
+      "x": 400,
+      "y": 500,
+      "label": "H1"
+    },
+    {
+      "type": "lamp",
+      "x": 490,
+      "y": 500,
+      "label": "H2"
+    },
+    {
+      "type": "text",
+      "x": 400,
+      "y": 580,
+      "text": "chod",
+      "anchor": "middle",
+      "size": 10
+    },
+    {
+      "type": "text",
+      "x": 490,
+      "y": 580,
+      "text": "porucha",
+      "anchor": "middle",
+      "size": 10
+    }
+  ],
+  "wires": [
+    [
+      [
+        80,
+        60
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    [
+      [
+        100,
+        60
+      ],
+      [
+        100,
+        80
+      ]
+    ],
+    [
+      [
+        120,
+        60
+      ],
+      [
+        120,
+        80
+      ]
+    ],
+    [
+      [
+        80,
+        140
+      ],
+      [
+        80,
+        180
+      ]
+    ],
+    [
+      [
+        100,
+        140
+      ],
+      [
+        100,
+        180
+      ]
+    ],
+    [
+      [
+        120,
+        140
+      ],
+      [
+        120,
+        180
+      ]
+    ],
+    [
+      [
+        80,
+        240
+      ],
+      [
+        80,
+        260
+      ]
+    ],
+    [
+      [
+        100,
+        240
+      ],
+      [
+        100,
+        260
+      ]
+    ],
+    [
+      [
+        120,
+        240
+      ],
+      [
+        120,
+        260
+      ]
+    ],
+    [
+      [
+        80,
+        320
+      ],
+      [
+        80,
+        350
+      ]
+    ],
+    [
+      [
+        100,
+        320
+      ],
+      [
+        100,
+        350
+      ]
+    ],
+    [
+      [
+        120,
+        320
+      ],
+      [
+        120,
+        350
+      ]
+    ],
+    [
+      [
+        160,
+        60
+      ],
+      [
+        160,
+        445
+      ],
+      [
+        100,
+        445
+      ],
+      [
+        100,
+        428
+      ]
+    ],
+    [
+      [
+        80,
+        160
+      ],
+      [
+        260,
+        160
+      ],
+      [
+        260,
+        180
+      ]
+    ],
+    [
+      [
+        260,
+        240
+      ],
+      [
+        260,
+        260
+      ]
+    ],
+    [
+      [
+        260,
+        320
+      ],
+      [
+        260,
+        340
+      ]
+    ],
+    [
+      [
+        260,
+        400
+      ],
+      [
+        260,
+        420
+      ]
+    ],
+    [
+      [
+        260,
+        410
+      ],
+      [
+        320,
+        410
+      ],
+      [
+        320,
+        420
+      ]
+    ],
+    [
+      [
+        320,
+        480
+      ],
+      [
+        320,
+        490
+      ],
+      [
+        260,
+        490
+      ]
+    ],
+    [
+      [
+        260,
+        480
+      ],
+      [
+        260,
+        500
+      ]
+    ],
+    [
+      [
+        260,
+        560
+      ],
+      [
+        260,
+        600
+      ],
+      [
+        540,
+        600
+      ]
+    ],
+    [
+      [
+        260,
+        250
+      ],
+      [
+        490,
+        250
+      ],
+      [
+        490,
+        270
+      ]
+    ],
+    [
+      [
+        400,
+        250
+      ],
+      [
+        400,
+        270
+      ]
+    ],
+    [
+      [
+        400,
+        330
+      ],
+      [
+        400,
+        500
+      ]
+    ],
+    [
+      [
+        490,
+        330
+      ],
+      [
+        490,
+        500
+      ]
+    ],
+    [
+      [
+        400,
+        560
+      ],
+      [
+        400,
+        600
+      ]
+    ],
+    [
+      [
+        490,
+        560
+      ],
+      [
+        490,
+        600
+      ]
+    ]
+  ],
+  "explain": "Krátký stisk **S1** sepne stykač **KM1**. Jeho pomocný kontakt **13–14** je zapojený paralelně k S1, takže po uvolnění tlačítka drží cívku pod napětím dál – tomu se říká **samodržení** (přídržný kontakt).\n\nVypnutí: **S0** (rozpínací, červené) přeruší obvod cívky, KM1 odpadne a tím rozepne i přídržný kontakt. Stejně zafunguje i **tepelné relé F2** (kontakt 95–96) při přetížení motoru – a zároveň sepne 97–98 a rozsvítí signálku poruchy **H2**.\n\n**Vyzkoušej:**\n1. Zapni **Q1**, krátce stiskni **S1** – motor běží i po puštění tlačítka, svítí **H1**.\n2. Stiskni **S0** – motor se zastaví.\n3. Spusť motor a klikni na **F2** (simulace přetížení) – motor se zastaví, svítí **H2**. Dokud F2 neresetuješ, motor nejde spustit.\n4. Podrž **S0** a k tomu mačkej **S1** – Stop má vždy přednost.\n\nProč je to bezpečné: po výpadku napětí stykač odpadne a po obnovení **sám nenaběhne** (ochrana proti samovolnému rozběhu)."
+}
