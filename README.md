@@ -37,7 +37,32 @@ Viz [`.env.example`](.env.example). Nejdůležitější proměnné:
 | `DB_PATH` | cesta k SQLite databázi (výchozí `data/elektrohelper.db`) |
 | `UPLOADS_DIR` | nahrané soubory (výchozí `data/uploads`) |
 | `OBSIDIAN_VAULT` | cesta k Obsidian vaultu pro import z administrace |
-| `TRUST_PROXY=1`, `SECURE_COOKIES=1` | provoz za reverzní proxy s HTTPS |
+| `TRUST_PROXY` | za reverzní proxy: `loopback` (cloudflared/nginx na stejném stroji) nebo počet proxy (`1`) |
+| `SECURE_COOKIES=1` | vynutí Secure cookie i přes http (jinak se nastaví automaticky přes HTTPS) |
+
+## Nasazení na Debian (systemd + Cloudflare Tunnel)
+
+Instalace (Node.js 24 z NodeSource, kód v `/opt/elektrohelper`, data v `/var/lib/elektrohelper`, služba `elektrohelper` na portu 3000):
+
+```bash
+sudo apt-get update && sudo apt-get install -y curl git ca-certificates gnupg && curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo corepack enable && { id -u elektro >/dev/null 2>&1 || sudo useradd --system --home-dir /var/lib/elektrohelper --shell /usr/sbin/nologin elektro; } && sudo git clone https://github.com/Radioactiverm/elektrohelper.git /opt/elektrohelper && cd /opt/elektrohelper && sudo env COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install --prod --frozen-lockfile && sudo cp deploy/elektrohelper.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now elektrohelper && sleep 3 && curl -fsS -o /dev/null -w 'ElektroHelper běží: HTTP %{http_code}\n' http://localhost:3000/
+```
+
+Pak hned v síti LAN otevři `http://<ip-serveru>:3000/admin/setup` a vytvoř správce – **dřív, než web zveřejníš**.
+
+Zveřejnění přes Cloudflare Tunnel (není potřeba veřejná IP ani přesměrování portů; `tunnel login` vypíše odkaz, otevři ho v prohlížeči a vyber doménu). Příkaz vytvoří tunel, DNS záznam a službu `cloudflared`:
+
+```bash
+DOMAIN=ele.radioactiverm.net && sudo mkdir -p --mode=0755 /usr/share/keyrings /etc/cloudflared && curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null && echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list >/dev/null && sudo apt-get update && sudo apt-get install -y cloudflared && sudo cloudflared tunnel login && sudo cloudflared tunnel create --credentials-file /etc/cloudflared/elektrohelper.json elektrohelper && sudo cloudflared tunnel route dns --overwrite-dns elektrohelper "$DOMAIN" && printf '%s\n' "tunnel: $(sudo sed -n 's/.*"TunnelID": *"\([^"]*\)".*/\1/p' /etc/cloudflared/elektrohelper.json)" 'credentials-file: /etc/cloudflared/elektrohelper.json' 'ingress:' "  - hostname: $DOMAIN" '    service: http://localhost:3000' '  - service: http_status:404' | sudo tee /etc/cloudflared/config.yml >/dev/null && sudo cloudflared service install && sudo systemctl enable --now cloudflared
+```
+
+Aktualizace na nejnovější verzi z GitHubu:
+
+```bash
+cd /opt/elektrohelper && sudo git pull && sudo env COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install --prod --frozen-lockfile && sudo systemctl restart elektrohelper
+```
+
+Logy: `journalctl -u elektrohelper -f`. Záloha = soubor `/var/lib/elektrohelper/elektrohelper.db` a složka `uploads/`.
 
 ## Obsah
 

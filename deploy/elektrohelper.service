@@ -1,0 +1,30 @@
+[Unit]
+Description=ElektroHelper – studijní web pro odborný výcvik
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=elektro
+Group=elektro
+WorkingDirectory=/opt/elektrohelper
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=0.0.0.0
+# cloudflared běží na stejném stroji → věříme jen proxy z localhostu
+Environment=TRUST_PROXY=loopback
+Environment=DB_PATH=/var/lib/elektrohelper/elektrohelper.db
+Environment=UPLOADS_DIR=/var/lib/elektrohelper/uploads
+# Vlastní proměnné (ADMIN_USER, ADMIN_PASSWORD, OBSIDIAN_VAULT…) patří sem:
+EnvironmentFile=-/etc/elektrohelper.env
+StateDirectory=elektrohelper
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

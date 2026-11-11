@@ -14,8 +14,8 @@ export const config = {
   // Cesta k Obsidian vaultu pro import z administrace (volitelné).
   obsidianVault: process.env.OBSIDIAN_VAULT || '',
   siteName: process.env.SITE_NAME || 'ElektroHelper',
-  // Za reverzní proxy (nginx, Caddy) nastav TRUST_PROXY=1, aby se bral X-Forwarded-For.
-  trustProxy: process.env.TRUST_PROXY === '1',
+  // Za reverzní proxy nastav TRUST_PROXY: počet proxy (1) nebo „loopback“ pro cloudflared/nginx na stejném stroji.
+  trustProxy: /^\d+$/.test(process.env.TRUST_PROXY || '') ? Number(process.env.TRUST_PROXY) : process.env.TRUST_PROXY || '',
   secureCookies: process.env.SECURE_COOKIES === '1',
   sessionDays: 14,
 };

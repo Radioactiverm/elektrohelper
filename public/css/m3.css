@@ -421,6 +421,8 @@ input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px 
 
 /* --- Banner / upozornění ---------------------------------------------------------------- */
 .banner { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--md-sys-shape-md); background: var(--md-sys-color-surface-container-high); margin: 0 0 16px; }
+.banner > :not(.material-symbols-rounded) { min-width: 0; }
+.banner code { overflow-wrap: anywhere; }
 .banner.error { background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); }
 .banner.success { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
 

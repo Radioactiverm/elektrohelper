@@ -50,7 +50,8 @@ export function startSession(res, userId) {
   res.cookie(COOKIE, id, {
     httpOnly: true,
     sameSite: 'lax',
-    secure: config.secureCookies,
+    // Přes HTTPS (i za proxy) vždy Secure, po síti LAN přes http zůstane přihlášení funkční.
+    secure: config.secureCookies || res.req.secure,
     expires: new Date(expires),
     path: '/',
   });

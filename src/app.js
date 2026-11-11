@@ -11,7 +11,7 @@ import { errorPage } from './views/pages.js';
 export function createApp() {
   const app = express();
   app.disable('x-powered-by');
-  if (config.trustProxy) app.set('trust proxy', 1);
+  if (config.trustProxy) app.set('trust proxy', config.trustProxy);
 
   app.use((req, res, next) => {
     res.set({

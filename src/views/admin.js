@@ -352,7 +352,7 @@ ${result ? html`<p class="banner success">${icon('check_circle')} ${result}</p>`
       <fieldset class="checks"><legend>Složky</legend>${folders.map((f) => html`<label class="check"><input type="checkbox" name="folders" value="${f}" checked>${f}</label>`)}</fieldset>
       <label class="switch-field"><input type="checkbox" name="overwrite" value="1" role="switch"><span class="switch"></span>Přepsat existující články se stejným názvem</label>
       <button class="btn filled" type="submit">${icon('sync')}Importovat z vaultu</button>`
-      : html`<p class="banner">${icon('info')} Vault není nastaven. Spusť server s <code>OBSIDIAN_VAULT=/cesta/k/vaultu</code>.</p>`}
+      : html`<p class="banner">${icon('info')} <span>Vault není nastaven. Spusť server s <code>OBSIDIAN_VAULT=/cesta/k/vaultu</code>.</span></p>`}
   </form>
   <form class="card outlined form-card" method="post" action="/admin/import">
     <h2 class="title-md">${icon('inventory')} Obnovit z repozitáře</h2>

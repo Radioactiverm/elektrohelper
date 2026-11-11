@@ -100,7 +100,7 @@ ${(p.styles || []).map((s) => html`<link rel="stylesheet" href="${s}">`)}
     </footer>
   </div>
 </div>
-<nav class="nav-bar" aria-label="Navigace">${navItems.slice(0, 5)}</nav>
+<nav class="nav-bar" aria-label="Navigace">${navItems}</nav>
 <div class="snackbar-host" aria-live="polite"></div>
 ${p.mermaid ? raw('<script src="/vendor/mermaid/mermaid.min.js" defer></script>') : ''}
 <script type="module" src="/js/app.js"></script>
